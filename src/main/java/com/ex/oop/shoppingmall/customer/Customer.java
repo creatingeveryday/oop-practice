@@ -1,6 +1,6 @@
 package com.ex.oop.shoppingmall.customer;
 
-import com.ex.oop.shoppingmall.Cart;
+import com.ex.oop.shoppingmall.cart.Cart;
 import com.ex.oop.shoppingmall.coupon.Coupon;
 import com.ex.oop.shoppingmall.currency.Money;
 import com.ex.oop.shoppingmall.item.Item;
@@ -29,8 +29,9 @@ public class Customer {
         this.cart = new Cart(this, new ArrayList<>());
     }
 
-    public void putItemInCart(Item item) {
-        this.cart.saveItem(item);
+    public void putItemInCart(Item item, int quantity) {
+        this.cart.saveItem(item, quantity);
+
     }
 
     public void putSelectedItemsInCart(List<Item> itemList) {
@@ -39,7 +40,7 @@ public class Customer {
 
     public String showCart() {
         return "\n[" + this.name + "의 장바구니]\n"
-                + this.cart.showCart();
+                + this.cart.showCart() + "\n";
     }
 
     public boolean isUserLevelSameOrHigher(UserLevel userLevel) {

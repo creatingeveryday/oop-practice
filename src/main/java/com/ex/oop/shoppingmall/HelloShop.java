@@ -24,17 +24,17 @@ public class HelloShop {
         ItemCategory food = ItemCategory.FOOD;
 
         AmountItemDiscountPolicy book1000wonAboveVIP = new AmountItemDiscountPolicy(Money.wons(1000),
-                                                            new UserLevelAboveCondition(UserLevel.VIP),
-                                                            new CategorySameCondition(ItemCategory.BOOK));
+                new UserLevelAboveCondition(UserLevel.VIP),
+                new CategorySameCondition(ItemCategory.BOOK));
 
 
         PercentItemDiscountPolicy food7percentAboveVIP = new PercentItemDiscountPolicy(0.07,
-                                                            new UserLevelAboveCondition(UserLevel.VIP),
-                                                            new CategorySameCondition(ItemCategory.FOOD));
+                new UserLevelAboveCondition(UserLevel.VIP),
+                new CategorySameCondition(ItemCategory.FOOD));
 
         PercentItemDiscountPolicy food15percentForVVIP = new PercentItemDiscountPolicy(0.15,
-                                                            new UserLevelSameCondition(UserLevel.VVIP),
-                                                            new CategorySameCondition(ItemCategory.FOOD));
+                new UserLevelSameCondition(UserLevel.VVIP),
+                new CategorySameCondition(ItemCategory.FOOD));
 
 
         Item objectBook = new Item(1, book, "오브젝트", Money.wons(13000), book1000wonAboveVIP);
@@ -46,33 +46,29 @@ public class HelloShop {
         Item apple = new Item(4, food, "사과", Money.wons(9000), food15percentForVVIP);
 
 
-
         // 아이템을 장바구니에 담고 표시.
-        // TODO 장바구니 아이템 개수
-        john.putItemInCart(cleanCodeBook);
-        john.putItemInCart(bread);
-        john.putItemInCart(bread);
-        john.putItemInCart(bread);
-        john.putItemInCart(apple);
-        john.putItemInCart(apple);
+        john.putItemInCart(cleanCodeBook, 2);
+        john.putItemInCart(bread, 1);
+        john.putItemInCart(apple, 10);
         System.out.println(john.showCart());
 
-        jack.putItemInCart(cleanCodeBook);
-        jack.putItemInCart(bread);
-        jack.putItemInCart(bread);
-        jack.putItemInCart(bread);
-        jack.putItemInCart(apple);
-        jack.putItemInCart(apple);
+        jack.putItemInCart(cleanCodeBook, 2);
+        jack.putItemInCart(bread, 1);
+        jack.putItemInCart(apple, 10);
         System.out.println(jack.showCart());
 
+        tom.putItemInCart(cleanCodeBook, 2);
+        tom.putItemInCart(bread, 1);
+        tom.putItemInCart(apple, 10);
+        System.out.println(tom.showCart());
 
-        System.out.println(jack.getCart().buy());
+
+        System.out.println(tom.getCart().buy());
 
 
         // TODO 추후 포인트 기능
         // TODO 추후 쿠폰 기능
-
-
+        // TODO 추후 DB 연결
 
 
 //        System.out.println(UserLevel.VIP.compareTo(UserLevel.VIP));  // 0
