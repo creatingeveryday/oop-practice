@@ -1,31 +1,27 @@
-package com.ex.oop.shoppingmall.cart;
+package com.ex.oop.shoppingmall;
 
-import com.ex.oop.shoppingmall.Order;
 import com.ex.oop.shoppingmall.currency.Money;
 import com.ex.oop.shoppingmall.customer.Customer;
 import com.ex.oop.shoppingmall.item.Item;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Cart {
     private Customer customer;
-    private Set<CartItem> itemList; // linkedHashSet 중복방지, 순서 유지
+//    private List<Item> itemList;
+    private Set<Item> itemList; // linkedHashSet 중복방지, 순서 유지
 
-    public Cart(Customer customer) {
+    public Cart(Customer customer, List<Item> itemList) {
         this.customer = customer;
-        this.itemList = new LinkedHashSet<>();
+//        this.itemList = itemList;
+        this.itemList = new LinkedHashSet<>(itemList);
     }
 
-    public Cart(Customer customer, List<CartItem> cartItemList) {
-        this.customer = customer;
-        this.itemList = new LinkedHashSet<>(cartItemList);
-    }
-
-    public void saveItem(Item item, int quantity) {
-        CartItem cartItem = new CartItem(item, quantity);
-        this.itemList.add(cartItem);
+    public void saveItem(Item item) {
+        this.itemList.add(item);
     }
 
     public Order buy() {
@@ -34,8 +30,8 @@ public class Cart {
 
     public String showCart() {
         String cart = "";
-        for (CartItem cartItem : this.itemList) {
-            cart += cartItem.toString() + "\n";
+        for (Item item : this.itemList) {
+            cart += item.toString()+"\n";
         }
 
         cart += "총 금액   : " + this.calculateTotalCartItemAmount();
@@ -46,8 +42,8 @@ public class Cart {
     public Money calculateTotalCartItemAmount() {
         Money total = Money.ZERO;
 
-        for (CartItem cartItem : this.itemList) {
-            total = total.plus(cartItem.getCartItemPrice());
+        for (Item item : this.itemList) {
+            total = total.plus(item.getItemPrice());
         }
 
         return total;
@@ -56,12 +52,13 @@ public class Cart {
     private Money calculateTotalPaymentAmount() {
         Money total = Money.ZERO;
 
-        for (CartItem cartItem : this.itemList) {
-            Money paymentAmount = cartItem.calculateCartItemPrice(this.customer);
-            total = total.plus(paymentAmount);
+        for (Item item : this.itemList) {
+            Money discounted = item.calculateItemPrice(this.customer);
+            total = total.plus(discounted);
         }
 
         return total;
+
     }
 
     public Customer getCustomer() {
