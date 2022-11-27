@@ -10,8 +10,8 @@ public class Item {
     private String itemName;
     private Money price; // 정가
     private ItemDiscountPolicy itemDiscountPolicy;
+    private int stock; // 재고
 
-    private int stock;
 
     public Item(long itemId, ItemCategory category, String itemName, Money price, ItemDiscountPolicy itemDiscountPolicy) {
         this.itemId = itemId;
