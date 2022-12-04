@@ -1,4 +1,4 @@
-package com.ex.oop.shoppingmall;
+package com.ex.oop.shoppingmall.order;
 
 import com.ex.oop.shoppingmall.cart.Cart;
 import com.ex.oop.shoppingmall.currency.Money;

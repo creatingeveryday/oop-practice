@@ -1,6 +1,6 @@
 package com.ex.oop.shoppingmall.cart;
 
-import com.ex.oop.shoppingmall.Order;
+import com.ex.oop.shoppingmall.order.Order;
 import com.ex.oop.shoppingmall.currency.Money;
 import com.ex.oop.shoppingmall.customer.Customer;
 import com.ex.oop.shoppingmall.item.Item;

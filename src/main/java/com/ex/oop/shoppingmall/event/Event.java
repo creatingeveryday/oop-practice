@@ -1,4 +1,4 @@
-package com.ex.oop.shoppingmall;
+package com.ex.oop.shoppingmall.event;
 
 import com.ex.oop.shoppingmall.coupon.Coupon;
 import com.ex.oop.shoppingmall.item.Item;
