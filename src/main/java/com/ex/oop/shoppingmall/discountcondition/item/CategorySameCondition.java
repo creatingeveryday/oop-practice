@@ -1,10 +1,9 @@
-package com.ex.oop.shoppingmall.discountcondition;
+package com.ex.oop.shoppingmall.discountcondition.item;
 
-import com.ex.oop.shoppingmall.customer.Customer;
 import com.ex.oop.shoppingmall.item.Item;
 import com.ex.oop.shoppingmall.item.ItemCategory;
 
-public class CategorySameCondition implements DiscountCondition {
+public class CategorySameCondition implements ItemDiscountCondition {
 
     private ItemCategory itemCategory;
 
@@ -13,7 +12,7 @@ public class CategorySameCondition implements DiscountCondition {
     }
 
     @Override
-    public boolean isSatisfiedBy(Customer customer, Item item) {
+    public boolean isSatisfiedBy(Item item) {
         return item.isSameCategory(itemCategory);
     }
 }

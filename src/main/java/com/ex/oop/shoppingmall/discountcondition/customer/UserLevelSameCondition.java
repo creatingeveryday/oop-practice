@@ -1,10 +1,9 @@
-package com.ex.oop.shoppingmall.discountcondition;
+package com.ex.oop.shoppingmall.discountcondition.customer;
 
 import com.ex.oop.shoppingmall.customer.Customer;
 import com.ex.oop.shoppingmall.customer.UserLevel;
-import com.ex.oop.shoppingmall.item.Item;
 
-public class UserLevelSameCondition implements DiscountCondition {
+public class UserLevelSameCondition implements CustomerDiscountCondition {
 
     private UserLevel userLevel;
 
@@ -13,7 +12,7 @@ public class UserLevelSameCondition implements DiscountCondition {
     }
 
     @Override
-    public boolean isSatisfiedBy(Customer customer, Item item) {
+    public boolean isSatisfiedBy(Customer customer) {
         return customer.isUserLevelSame(userLevel);
     }
 }
