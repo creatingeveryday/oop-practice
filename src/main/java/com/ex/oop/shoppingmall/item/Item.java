@@ -48,12 +48,12 @@ public class Item {
 
         Item item = (Item) o;
 
-        return getItemId() == item.getItemId();
+        return itemId == item.getItemId();
     }
 
     @Override
     public int hashCode() {
-        return (int) (getItemId() ^ (getItemId() >>> 32));
+        return (int) (itemId ^ (itemId >>> 32));
     }
 
     public long getItemId() {
